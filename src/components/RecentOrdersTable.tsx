@@ -2,17 +2,10 @@ import * as React from 'react';
 import { Box, Typography } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Order } from '../types';
+import { convertOrdersToRows } from '../helpers/data-formatting';
 
 interface RecentOrdersTableProps {
   orders: Order[];
-}
-
-interface FormattedOrder {
-  id: number; 
-  date: string; 
-  customerName: string; 
-  itemCount: number; 
-  total: string;
 }
 
 // DataGrid column definitions
@@ -23,24 +16,10 @@ const columns: GridColDef[] = [
   { field: 'total', headerName: 'Order Total', flex: 1 },
 ]
 
-// Standardize cost format to $X.XX
-const reformatCost = (cost: string): string => `$${parseFloat(cost.slice(1)).toFixed(2)}`;
-
-const convertOrdersToRows = (orders: Order[]) => {
-  // Reformat to datagrid formatted order then default sort by date (new -> old)
-  return orders
-    .map((order, index) => ({
-      id: index,
-      date: new Date(order.Date).toLocaleDateString(),
-      customerName: order.CustomerName,
-      itemCount: order.Items.length,
-      total: reformatCost(order.Total),
-    }))
-    .sort((a: FormattedOrder, b: FormattedOrder) => 
-      new Date(b.date).valueOf() - new Date(a.date).valueOf()
-    );
-}
-
+/**
+ * @param {Order[]} orders - List of orders to display in the table, displays a loading message if empty. 
+ * @returns 
+ */
 const RecentOrdersTable = ({ orders }: RecentOrdersTableProps) => {
   return (
     <Box sx={{ width: '70%' }}>

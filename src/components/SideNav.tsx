@@ -10,6 +10,9 @@ interface ListItemData {
   icon: JSX.Element,
 }
 
+/**
+ * Navigational component displaying links to the different pages users can navigate to
+ */
 const SideNav = () => {
   const navigate = useNavigate();
 

@@ -6,7 +6,10 @@ interface PageContentWrapperProps {
   children: React.ReactNode;
 }
 
-
+/**
+ * @param {React.ReactNode} children - The page content to render inside the wrapper 
+ * @returns 
+ */
 const PageContentWrapper = ({children}: PageContentWrapperProps) => {
   return (
     <>
