@@ -1,13 +1,29 @@
 import * as React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Paths } from '../Paths';
+import { useParams } from 'react-router-dom';
+import { Typography } from '@mui/material';
+import SideNav from '../components/SideNav';
+import { Order } from '../types';
+import RecentOrders from '../components/RecentOrders';
 
-const Order = () => {
+interface OrderPageProps {
+  orders: Order[];
+}
+
+const OrderPage = ({orders}: OrderPageProps) => {
   const { id } = useParams<{ id: string }>();
 
   return (
-    <>i am the single order page for id {id}<br/><Link to={Paths.HOME}>go home</Link></>
+    <>
+      <SideNav />
+      <Typography variant='body1'>
+        {
+            orders.length > 0 
+            ? <RecentOrders orders={orders} /> 
+            : 'loading...'
+          }
+      </Typography>
+    </>
   )
 }
 
-export default Order;
+export default OrderPage;

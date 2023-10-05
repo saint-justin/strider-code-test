@@ -1,17 +1,21 @@
 import * as React from 'react';
 import SideNav from '../components/SideNav';
-import { Link } from 'react-router-dom';
-import { Paths } from '../Paths';
+import { Box, Typography } from '@mui/material';
+import { Order } from '../types';
 
-const HomePage = () => {
+interface HomePageProps {
+  orders: Order[];
+}
+
+const HomePage = ({ orders }: HomePageProps) => {
   return (
     <>
       <SideNav />
-      <main>henlo</main>
-      <br/>
-      <Link to={Paths.ORDERS}>go to orders</Link>
-      <br/>
-      <Link to={`/order/123`}>go to order 123</Link>
+      <Box display={'flex'} sx={{ ml: '15vw', padding: '5vw' }} justifyContent={'center'}>
+        <Box display={'flex'} width={'100%'} height={'100%'} bgcolor={'red'}>
+          <Typography>henlo</Typography>
+        </Box>
+      </Box>
     </>
   )
 }

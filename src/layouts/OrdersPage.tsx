@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Order } from '../types';
 import { Link } from 'react-router-dom';
-import { Paths } from '../Paths';
+import { Paths } from '../constants';
+import { Typography } from '@mui/material';
+import SideNav from '../components/SideNav';
 
 interface OrdersProps {
   orders: Order[];
@@ -9,7 +11,12 @@ interface OrdersProps {
 
 const OrdersPage = ({ orders }: OrdersProps) => {
   return (
-    <>i am the orders page<br/><Link to={Paths.HOME}>go home</Link></>
+    <>
+      <SideNav />
+      <Typography variant='body1'>
+        i am the orders page<Link to={Paths.HOME}>go home</Link>
+      </Typography>
+    </>
   )
 }
 
