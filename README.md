@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Strider Orders Code Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Notes to reviewer
+
+Howdy! Welcome to the README. Some of what's in here is boiler plate from create-react-app, but some of it will be specific notes from the dev (Justin) to clarify parts of the system. 
 
 ## Available Scripts
 

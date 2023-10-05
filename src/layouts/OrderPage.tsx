@@ -3,26 +3,22 @@ import { useParams } from 'react-router-dom';
 import { Typography } from '@mui/material';
 import SideNav from '../components/SideNav';
 import { Order } from '../types';
-import RecentOrders from '../components/RecentOrders';
+import RecentOrdersTable from '../components/RecentOrdersTable';
+import PageContentWrapper from '../components/PageContentWrapper';
 
 interface OrderPageProps {
   orders: Order[];
 }
 
-const OrderPage = ({orders}: OrderPageProps) => {
+const OrderPage = ({ orders }: OrderPageProps) => {
   const { id } = useParams<{ id: string }>();
 
   return (
-    <>
-      <SideNav />
+    <PageContentWrapper>
       <Typography variant='body1'>
-        {
-            orders.length > 0 
-            ? <RecentOrders orders={orders} /> 
-            : 'loading...'
-          }
+        hi im the individual order page for order { id }.
       </Typography>
-    </>
+    </PageContentWrapper>
   )
 }
 

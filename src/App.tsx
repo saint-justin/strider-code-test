@@ -21,7 +21,6 @@ function App() {
       const orders = await fetch(uri, { method: 'GET', mode: 'cors' });
       const orderJson = await orders.json();
       if (orderJson) {
-        console.log(orderData);
         setOrderData(orderJson as unknown as Order[])
       } else {
         // handle fetch error

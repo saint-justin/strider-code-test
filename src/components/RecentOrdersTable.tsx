@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Order } from '../types';
 
-interface RecentOrdersProps {
+interface RecentOrdersTableProps {
   orders: Order[];
 }
 
@@ -15,6 +15,7 @@ interface FormattedOrder {
   total: string;
 }
 
+// DataGrid column definitions
 const columns: GridColDef[] = [
   { field: 'date', headerName: 'Date', flex: 1 },
   { field: 'customerName', headerName: 'Name', flex: 1 },
@@ -40,13 +41,16 @@ const convertOrdersToRows = (orders: Order[]) => {
     );
 }
 
-const RecentOrders = ({ orders }: RecentOrdersProps) => {
+const RecentOrdersTable = ({ orders }: RecentOrdersTableProps) => {
   return (
     <Box sx={{ width: '70%' }}>
       <Typography variant={'h5'} ml={'12px'}>Recent Orders</Typography>
-      <DataGrid sx={{ minWidth: '550px'}} rows={convertOrdersToRows(orders)} columns={columns} />
+      <DataGrid 
+        sx={{ minWidth: '550px'}} 
+        rows={convertOrdersToRows(orders)} 
+        columns={columns} />
     </Box>
   )
 }
 
-export default RecentOrders;
+export default RecentOrdersTable;
