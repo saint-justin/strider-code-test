@@ -16,7 +16,12 @@ const PageContentWrapper = ({children}: PageContentWrapperProps) => {
     <>
       <SideNav />
       <Header />
-      <Box display={'flex'} sx={{ ml: '15vw', mt: '4em', padding: '5vw' }} justifyContent={'center'}>
+      <Box 
+        display={'flex'} 
+        sx={{ ml: '15vw', mt: '64px', padding: '5vw' }} 
+        justifyContent={'center'} 
+        boxSizing={'border-box'}
+        maxHeight={'calc(100vh - 64px)'}>
         { children }
       </Box>
     </>

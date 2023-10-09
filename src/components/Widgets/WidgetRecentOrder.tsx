@@ -1,19 +1,28 @@
 import * as React from 'react';
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, Link, Typography } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useOrderContext } from '../../hooks/useOrders';
 import { convertOrdersToRows } from '../../helpers/data-formatting';
-
-const columns: GridColDef[] = [
-  { field: 'date', headerName: 'Date', flex: 1 },
-  { field: 'customerName', headerName: 'Name', flex: 1 },
-  { field: 'orderId', headerName: 'Order ID', flex: 1 },
-  { field: 'total', headerName: 'Order Price', flex: 1 },
-  { field: 'itemCount', headerName: 'Total Items', flex: 1 },
-]
+import { useNavigate } from 'react-router-dom';
 
 const WidgetRecentOrder = () => {
   const { orders } = useOrderContext();
+  const navigate = useNavigate();
+
+  const columns: GridColDef[] = [
+    { field: 'date', headerName: 'Date', flex: 1 },
+    { field: 'customerName', headerName: 'Name', flex: 1 },
+    { field: 'total', headerName: 'Order Price', flex: 1 },
+    { field: 'itemCount', headerName: 'Total Items', flex: 1 },
+    { 
+      field: 'orderId', 
+      headerName: 'Link', 
+      flex: 1,
+      renderCell: (props) => (
+        <Link sx={{ cursor: 'pointer'}} onClick={() => navigate(`/order/${props.value}`)}>Order #{props.value}</Link>
+      ),
+    },
+  ]
 
   return (
     <Card sx={{ width: '100%' }}>

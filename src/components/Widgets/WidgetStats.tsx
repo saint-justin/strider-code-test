@@ -34,7 +34,7 @@ const WidgetStats = () => {
 
         <Box mt={2}>
           <Typography component='div' sx={{ fontSize: 14 }} color='text.secondary'>
-            You received a total of <Typography component='span' color='text.primary'>{totalOrders}</Typography> orders.<br />
+            You have received a total of <Typography component='span' color='text.primary'>{totalOrders}</Typography> orders.<br />
             
             The <Typography component='span' color='text.primary'>{mostPopularName}</Typography> was your most popular item 
             with a total of <Typography component='span' color='text.primary'>{mostPopularCount}</Typography> items sold.<br /><br />
