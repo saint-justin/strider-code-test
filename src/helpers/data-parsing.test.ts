@@ -10,7 +10,7 @@ import { getMostPopularItem, getTotalOrders, getTotalSales } from "./data-parsin
  *  Items: Item[];
  */
 
-const testOrderDefault =   { 
+const testOrderDefault: Order = { 
   OrderId: 1,
   CustomerId: 1,
   CustomerName: 'John Doe',
@@ -31,7 +31,7 @@ const testOrderDefault =   {
 };
 
 
-const testOrderDecimal = {
+const testOrderDecimal: Order = {
   OrderId: 2,
   CustomerId: 1,
   CustomerName: 'John Doe',

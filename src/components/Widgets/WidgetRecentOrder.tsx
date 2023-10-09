@@ -18,7 +18,7 @@ const WidgetRecentOrder = () => {
   return (
     <Card sx={{ width: '100%' }}>
       <CardContent>
-        <Typography variant={'h5'} ml={'12px'} mb={1}>Orders by Recency</Typography>
+        <Typography variant={'h5'} ml={'12px'} mb={1}>Most Recent Orders</Typography>
         <DataGrid 
           rows={convertOrdersToRows(orders)} 
           columns={columns}
