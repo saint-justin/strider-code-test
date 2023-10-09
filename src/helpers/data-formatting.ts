@@ -24,6 +24,7 @@ export const convertOrdersToRows = (orders: Order[]) => {
     .map((order, index) => ({
       id: index,
       date: new Date(order.Date).toLocaleDateString(),
+      orderId: order.OrderId,
       customerName: order.CustomerName,
       itemCount: order.Items.length,
       total: reformatCost(order.Total),

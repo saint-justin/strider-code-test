@@ -38,3 +38,28 @@ export const getMostPopularItem = (orders: Order[]): [string, number] => {
 
   return mostPopularItem;
 }
+
+/**
+ * Helper to pull the most expensive order from an array of orders
+ * @param { Order[] } orders - List of orders to pull data from
+ * @returns { Order[] }      - Order with the highest total price 
+ */
+export const getMostExpensiveOrder = (orders: Order[]): Order => {
+  // Placeholder empty order while waiting for order data
+  if (orders.length === 0) return ({
+    OrderId: 0,
+    CustomerId: 0,
+    CustomerName: "",
+    Total: "",
+    Date: new Date(),
+    Items: []
+  });
+
+  let mostExpensive: Order = orders[0];
+  orders.forEach((order: Order) => {
+    const total: number = parseFloat(order.Total.slice(1));
+    if (total > parseFloat(mostExpensive.Total.slice(1))) mostExpensive = order;
+  });
+
+  return mostExpensive;
+}
