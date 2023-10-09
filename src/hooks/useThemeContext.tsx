@@ -1,6 +1,9 @@
 import { createContext, useMemo, useState, useContext } from 'react';
 import { PaletteMode, Theme, createTheme } from '@mui/material';
-import { JustChildrenProps } from '../types';
+
+interface ThemeContextProviderProps {
+  children: React.ReactNode;
+}
 
 interface ThemeContextProps {
   mode: string;
@@ -22,7 +25,7 @@ const useColorTheme = (): ThemeContextProps => {
 }
 
 /**
- * Default context to pass to ThemeContextProvider
+ * Instantiated context to pass to ThemeContextProvider
  */
 const ThemeContext = createContext<ThemeContextProps>({
   mode: 'dark',
@@ -32,18 +35,16 @@ const ThemeContext = createContext<ThemeContextProps>({
 
 /**
  * @param { React.ReactNode } children - The children to render inside the ThemeContextProvider
- * @returns { React.FC }               - The ThemeContextProvider component to wrap around the app
+ * @returns { React.FC }               - Externally accessible ThemeContextProvider wrapper
  */
-const ThemeContextProvider = ({ children }: JustChildrenProps) => {
+export const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
   const theme = useColorTheme();
   return <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
 }
 
 /**
- * @returns { ThemeContextProps } - Externally accessible hook
+ * @returns { ThemeContextProps } - Externally accessible ThemeContext instance
  */
-const useThemeContext = () => {
+export const useThemeContext = () => {
   return useContext(ThemeContext);
 }
-
-export { ThemeContextProvider, useThemeContext };

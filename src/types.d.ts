@@ -1,3 +1,4 @@
+/* ---- Order Data Types ---- */
 export interface Order {
   OrderId: number;
   CustomerId: number;
@@ -10,9 +11,11 @@ export interface Order {
 export interface Item {
   Item: string;
   ItemPrice: string; //price format $DDD.CC
-  Quantity: number;
+  Quantity: string;
 }
 
-export interface JustChildrenProps {
-  children: React.ReactNode;
+/* ---- Component Data Types ---- */
+
+export interface OrderProps {
+  orders: Order[];
 }

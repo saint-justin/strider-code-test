@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useThemeContext } from '../hooks/ThemeProvider';
+import { useThemeContext } from '../hooks/useThemeContext';
 import { Box } from '@mui/material';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';

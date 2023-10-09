@@ -17,7 +17,7 @@ const SideNav = () => {
   const navigate = useNavigate();
 
   const listItemData: ListItemData[] = [
-    { text:'Home', path: Paths.HOME, icon: <Home />},
+    { text:'Home', path: Paths.HOME, icon: <Home /> },
     { text:'Orders', path: Paths.ORDERS, icon: <Receipt /> },
     { text:'Customers', path: Paths.CUSTOMERS, icon: <People /> },
     { text:'Items', path: Paths.ITEMS, icon: <ShoppingCart /> },

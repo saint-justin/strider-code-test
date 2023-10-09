@@ -1,22 +1,26 @@
 import * as React from 'react';
-import { Box, Typography } from '@mui/material';
-import { Order } from '../types';
+import { Grid } from '@mui/material';
 import PageContentWrapper from '../components/PageContentWrapper';
-
-interface HomePageProps {
-  orders: Order[];
-}
+import WidgetStats from '../components/Widgets/WidgetStats';
 
 /**
- * @param {Order[]} orders - List of order data to pull from for homepage charts 
  * Home page layout including high level graphs for order data and nav tooling
  */
-const HomePage = ({ orders }: HomePageProps) => {
+const HomePage = () => {
+
+  const generateGridItems = (gridComponents: React.ReactNode[]): JSX.Element[] => {
+    return gridComponents.map((component: React.ReactNode, index: number) => (
+      <Grid item xs={6} key={`grid_item_${index}`}>{component}</Grid>
+    ));
+  }
+
+  const gridItems = [<WidgetStats />, <WidgetStats />, <WidgetStats />, <WidgetStats />];
+
   return (
     <PageContentWrapper>
-      <Box display={'flex'} width={'100%'} height={'100%'} bgcolor={'red'}>
-        <Typography>henlo</Typography>
-      </Box>
+      <Grid container spacing={2}>
+        { generateGridItems(gridItems) }
+      </Grid>
     </PageContentWrapper>
   )
 }
