@@ -12,3 +12,7 @@ export interface Item {
   ItemPrice: string; //price format $DDD.CC
   Quantity: number;
 }
+
+export interface JustChildrenProps {
+  children: React.ReactNode;
+}

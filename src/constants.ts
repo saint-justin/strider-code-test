@@ -1,3 +1,6 @@
+// I'm aware having a blanket 'constants' file isn't best practice, but using it here for the 
+// sake of expedience. In a larger project, I'd break these out into more specific files.
+
 export const Paths = {
   HOME: '/',
   ORDERS: '/orders',
@@ -8,4 +11,4 @@ export const Paths = {
   ITEM: '/item/:id',
 }
 
-export const STRIDER_PASSTHROUGH_URI = 'https://us-central1-strider-passthrough.cloudfunctions.net/api'
+export const STRIDER_PASSTHROUGH_URI = 'https://us-central1-strider-passthrough.cloudfunctions.net/api';

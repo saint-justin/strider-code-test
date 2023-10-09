@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemText, Toolbar } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { People, Receipt, ShoppingCart } from '@mui/icons-material';
+import { Home, Receipt, People, ShoppingCart } from '@mui/icons-material';
 import { Paths } from '../constants';
 
 interface ListItemData {
@@ -17,6 +17,7 @@ const SideNav = () => {
   const navigate = useNavigate();
 
   const listItemData: ListItemData[] = [
+    { text:'Home', path: Paths.HOME, icon: <Home />},
     { text:'Orders', path: Paths.ORDERS, icon: <Receipt /> },
     { text:'Customers', path: Paths.CUSTOMERS, icon: <People /> },
     { text:'Items', path: Paths.ITEMS, icon: <ShoppingCart /> },

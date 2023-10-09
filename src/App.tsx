@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import HomePage from './layouts/HomePage';
 import OrderPage from './layouts/OrderPage';
 import OrdersPage from './layouts/OrdersPage';
@@ -11,11 +12,14 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import './App.css';
+import { ThemeContextProvider, useThemeContext } from './hooks/ThemeProvider';
 
 
 function App() {
   const [orderData, setOrderData] = React.useState<Order[]>([]);
+  const { theme } = useThemeContext();
 
+  // Fetch data on first load
   React.useEffect(() => {
     const fetchOrders = async (uri: string) => {
       const orders = await fetch(uri, { method: 'GET', mode: 'cors' });
@@ -28,8 +32,12 @@ function App() {
     }
 
     fetchOrders(STRIDER_PASSTHROUGH_URI);
+
+    // window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    //   setTheme(event.matches ? "dark" : "light");
+    // });
     // eslint-disable-next-line
-  }, []) // no deps array or including orders in dep array causes infinite rerenders 
+  }, []) // undefined deps array or including orders in deps array causes infinite rerenders 
 
   const router = createBrowserRouter([
     { path: Paths.HOME,   element: <HomePage orders={orderData} /> },
@@ -40,7 +48,10 @@ function App() {
 
   return (
     <React.StrictMode>
-      <RouterProvider router={router} />
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <RouterProvider router={router} />
+        </ThemeProvider>
     </React.StrictMode>
   );
 }

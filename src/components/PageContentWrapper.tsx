@@ -1,6 +1,7 @@
 import * as React from 'react';
-import SideNav from './SideNav';
 import { Box } from '@mui/material';
+import SideNav from './SideNav';
+import Header from './Header';
 
 interface PageContentWrapperProps {
   children: React.ReactNode;
@@ -14,8 +15,9 @@ const PageContentWrapper = ({children}: PageContentWrapperProps) => {
   return (
     <>
       <SideNav />
-      <Box display={'flex'} sx={{ ml: '15vw', padding: '5vw' }} justifyContent={'center'}>
-        {children}
+      <Header />
+      <Box display={'flex'} sx={{ ml: '15vw', mt: '4em', padding: '5vw' }} justifyContent={'center'}>
+        { children }
       </Box>
     </>
   )
