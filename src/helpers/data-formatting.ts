@@ -30,6 +30,7 @@ export const convertOrdersToRows = (orders: Order[]) => {
       date: new Date(order.Date).toLocaleDateString(),
       orderId: order.OrderId,
       customerName: order.CustomerName,
+      customerId: order.CustomerId,
       itemCount: order.Items.reduce((acc, item) => acc + parseInt(item.Quantity), 0),
       total: reformatCost(order.Total),
     }))

@@ -27,7 +27,7 @@ const WidgetStats = () => {
           <Typography sx={{ fontSize: 14 }} color='text.secondary'>
             Total Sales
           </Typography>
-          <Typography variant='h5' component='span' gutterBottom color='text.primary'>
+          <Typography variant='h5' component='span' gutterBottom color='text.primary' fontSize={24} fontWeight={800}>
             { reformatCost(`$${totalSales}`) }
           </Typography>
         </Box>

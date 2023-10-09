@@ -25,7 +25,7 @@ const OrderPage = () => {
   }
 
   const formatAccordionItem = (item: Item, index: number): JSX.Element => (
-    <Accordion key={`item_accordian_${index}`}>
+    <Accordion key={`item_accordian_${index}`} variant={'outlined'}>
       <AccordionSummary>{item.Item} ({item.Quantity})</AccordionSummary>
       <AccordionDetails sx={{ display: 'flex', flexDirection: 'row', gap: '4em'}}>
         <LabeledContent label={'Total Cost'} content={formatTotalCostFromItem(item)} />
@@ -44,7 +44,7 @@ const OrderPage = () => {
         </Grid>
 
         <Grid item xs={4} display={'flex'}>
-          <Card variant={'outlined' } sx={{ height: '100%', width: '100%' }}>
+          <Card sx={{ height: '100%', width: '100%' }}>
             <CardContent>
               <LabeledContent emphasize label={'Total'} content={reformatCost(order.Total)} />
               <LabeledContent label={'Customer Name'} content={`${order.CustomerName} (Customer ID #${id})`} linkPath={`/customer/${id}`}/>
@@ -54,9 +54,9 @@ const OrderPage = () => {
         </Grid>
 
         <Grid item xs={8}>
-          <Card variant={'outlined'} sx={{ height: '100%' }}>
+          <Card sx={{ height: '100%' }}>
             <CardContent>
-              <Typography variant={'h5'}>Order Items</Typography>
+              <Typography variant={'h5'} mb={1}>Order Items</Typography>
               { order.Items.map((item, index) => formatAccordionItem(item, index)) }
             </CardContent>
           </Card>
