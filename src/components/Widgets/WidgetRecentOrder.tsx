@@ -32,7 +32,8 @@ const WidgetRecentOrder = () => {
           rows={convertOrdersToRows(orders)} 
           columns={columns} 
           initialState={{ pagination: { paginationModel: { pageSize: 3 }} }}
-          pageSizeOptions={[3]}/>
+          pageSizeOptions={[3]}
+          />
       </CardContent>
     </Card>
   )

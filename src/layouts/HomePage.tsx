@@ -4,6 +4,7 @@ import PageContentWrapper from '../components/PageContentWrapper';
 import WidgetStats from '../components/Widgets/WidgetStats';
 import WidgetRecentOrder from '../components/Widgets/WidgetRecentOrder';
 import WidgetRecentCustomers from '../components/Widgets/WidgetRecentCustomers';
+import WidgetSalesData from '../components/Widgets/WidgetSalesData';
 
 /**
  * Home page layout including high level graphs for order data and nav tooling
@@ -16,7 +17,7 @@ const HomePage = () => {
     ));
   }
 
-  const gridItems = [<WidgetStats />, <WidgetRecentOrder />, <WidgetRecentCustomers />, <WidgetStats />];
+  const gridItems = [<WidgetStats />, <WidgetRecentOrder />, <WidgetRecentCustomers />, <WidgetSalesData />];
 
   return (
     <PageContentWrapper>
