@@ -1,4 +1,4 @@
-import { Order } from "./types";
+import { CustomerInfo, Order } from "./types";
 
 // I'm aware having a blanket 'constants' file isn't best practice, but using it here for the 
 // sake of expedience. In a larger project, I'd break these out into more specific files.
@@ -22,4 +22,12 @@ export const PLACEHOLDER_ORDER: Order = {
   Total: '$0.00',
   Date: new Date(Date.now()),
   Items: []
+}
+
+export const PLACEHOLDER_CUSTOMER_INFO: CustomerInfo = {
+  id: -1,
+  name: "",
+  mostRecentOrder: new Date(Date.now()),
+  totalOrderSpending: "",
+  orders: []
 }

@@ -1,4 +1,4 @@
-import { Item, Order } from "../types";
+import { CustomerInfo, Item, Order } from "../types";
 
 export interface FormattedOrder {
   id: number; 
@@ -15,8 +15,6 @@ export interface FormattedOrder {
  * e.g. [$1] -> [$1.00] or [$123.5] -> [$123.50]
  */
 export const reformatCost = (cost: string): string => `$${parseFloat(cost.slice(1)).toFixed(2)}`;
-
-
 
 /**
  * Helper function that sorts and reformats the default data format for order array grid data format
@@ -58,4 +56,34 @@ export const reformatDate = (date: Date): string =>  {
 export const formatTotalCostFromItem = (item: Item): string => {
   const totalCost: number = parseInt(item.Quantity) * parseFloat(item.ItemPrice.slice(1));
   return `$${totalCost.toFixed(2)}`;
+}
+
+/**
+ * Helper function that pulls customer data from orders array
+ * @param { Order[] } orders - Array of orders to pull from 
+ * @param { string }  customerId - CustomerId to identify customer by 
+ * @returns { CustomerInfo | undefined } - CustomerInfo object if customer has orders, undefined otherwise
+ */
+export const getCustomerInfoFromOrders = (orders: Order[], customerId: string): CustomerInfo | undefined => {
+  const customerOrders = orders.filter(order => order.CustomerId === parseInt(customerId));
+
+  if (customerOrders.length === 0) {
+    return undefined;
+  }
+
+  const mostRecentOrderDate = customerOrders
+    .map(order => new Date(order.Date))
+    .sort((a, b) => b.valueOf() - a.valueOf())
+    [0];
+  const orderSpending = customerOrders
+    .map((order) => parseFloat(order.Total.slice(1)))
+    .reduce((acc, curr) => acc + curr, 0);
+
+  return ({
+    id: parseInt(customerId),
+    name: customerOrders[0].CustomerName,
+    mostRecentOrder: mostRecentOrderDate,
+    totalOrderSpending: `$${orderSpending.toFixed(2)}`,
+    orders: customerOrders
+  })
 }

@@ -14,6 +14,14 @@ export interface Item {
   Quantity: string;
 }
 
+export interface CustomerInfo {
+  id: number;
+  name: string;
+  mostRecentOrder: Date;
+  totalOrderSpending: string;
+  orders: Order[];
+}
+
 /* ---- Component Data Types ---- */
 
 export interface OrderProps {

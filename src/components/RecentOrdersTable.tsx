@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Link, Typography } from '@mui/material';
+import { Link } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Order } from '../types';
 import { convertOrdersToRows } from '../helpers/data-formatting';
@@ -25,13 +25,17 @@ const RecentOrdersTable = ({ orders }: RecentOrdersTableProps) => {
       field: 'customerId', 
       headerName: 'Customer Link', 
       flex: 1,
-      renderCell: (props) => <Link sx={{ cursor: 'pointer'}} onClick={() => navigate(`/customer/${props.value}`)}>Customer #{props.value}</Link>
+      renderCell: (props) => (
+        <Link sx={{ cursor: 'pointer'}} onClick={() => navigate(`/customer/${props.value}`)}>Customer #{props.value}</Link>
+      )
     },
     { 
       field: 'id', 
       headerName: 'Order Link', 
       flex: 1, 
-      renderCell: (props) => <Link sx={{ cursor: 'pointer'}} onClick={() => navigate(`/order/${props.value}`)}>Order #{props.value}</Link>
+      renderCell: (props) => (
+      <Link sx={{ cursor: 'pointer'}} onClick={() => navigate(`/order/${props.value}`)}>Order #{props.value}</Link>
+      ),
     }
   ]
 

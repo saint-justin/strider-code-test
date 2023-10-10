@@ -14,6 +14,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import './App.css';
 import { useOrderContext } from './hooks/useOrders';
+import CustomerPage from './layouts/CustomerPage';
 
 
 function App() {
@@ -36,10 +37,11 @@ function App() {
   }, []) // eslint-disable-line
 
   const router = createBrowserRouter([
-    { path: Paths.HOME,   element: <HomePage /> },
-    { path: Paths.ORDERS, element: <OrdersPage /> },
-    { path: Paths.ORDER,  element: <OrderPage /> },
-    { path: '*',          element: <NotFoundPage /> },
+    { path: Paths.HOME,      element: <HomePage /> },
+    { path: Paths.ORDERS,    element: <OrdersPage /> },
+    { path: Paths.ORDER,     element: <OrderPage /> },
+    { path: Paths.CUSTOMER,  element: <CustomerPage /> },
+    { path: '*',             element: <NotFoundPage /> },
   ])
 
   return (

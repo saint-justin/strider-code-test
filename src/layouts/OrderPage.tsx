@@ -1,10 +1,18 @@
 import * as React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Accordion, AccordionDetails, AccordionSummary, Card, CardContent, Divider, Grid, Typography } from '@mui/material';
+import { useParams } from 'react-router-dom';
+import { 
+  Accordion, 
+  AccordionDetails, 
+  AccordionSummary, 
+  Card, 
+  CardContent, 
+  Grid, 
+  Typography 
+} from '@mui/material';
 import { useOrderContext } from '../hooks/useOrders';
 import PageContentWrapper from '../components/PageContentWrapper';
 import LabeledContent from '../components/LabeledContent';
-import { PLACEHOLDER_ORDER, Paths } from '../constants';
+import { PLACEHOLDER_ORDER } from '../constants';
 import { Item, Order } from '../types';
 import { formatTotalCostFromItem, reformatCost, reformatDate } from '../helpers/data-formatting';
 
@@ -47,7 +55,7 @@ const OrderPage = () => {
           <Card sx={{ height: '100%', width: '100%' }}>
             <CardContent>
               <LabeledContent emphasize label={'Total'} content={reformatCost(order.Total)} />
-              <LabeledContent label={'Customer Name'} content={`${order.CustomerName} (Customer ID #${id})`} linkPath={`/customer/${id}`}/>
+              <LabeledContent label={'Customer Name'} content={`${order.CustomerName} (Customer ID #${order.CustomerId})`} linkPath={`/customer/${order.CustomerId}`}/>
               <LabeledContent label={'Placed On'} content={reformatDate(order.Date)} />
             </CardContent>
           </Card>
