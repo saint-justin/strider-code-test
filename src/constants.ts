@@ -38,3 +38,5 @@ export const PLACEHOLDER_ITEM_INFO: ItemInfo = {
   quantity: 0,
   totalSales: 0
 }
+
+export const MAX_API_RETRIES = 3;

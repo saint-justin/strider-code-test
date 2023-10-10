@@ -15,7 +15,7 @@ const CustomerPage = () => {
   let customerInfo = getCustomerInfoFromOrders(orders, id!);
   if (customerInfo === undefined) {
     customerInfo = PLACEHOLDER_CUSTOMER_INFO
-    // TODO: handle customer not found error messaging
+    // TODO: Handle customer not found error messaging
   }
 
   const averageCustomerSpending = parseFloat(customerInfo.totalOrderSpending.slice(1)) / customerInfo.orders.length;

@@ -1,15 +1,6 @@
 import { Order } from "../types"
 import { getMostPopularItem, getTotalOrders, getTotalSales } from "./data-parsing";
 
-/**
- *  OrderId: number;
- *  CustomerId: number;
- *  CustomerName: string;
- *  Total: string;  // sum of ItemPrice of all Items
- *  Date: Date;
- *  Items: Item[];
- */
-
 const testOrderDefault: Order = { 
   OrderId: 1,
   CustomerId: 1,
@@ -29,7 +20,6 @@ const testOrderDefault: Order = {
     }
   ]
 };
-
 
 const testOrderDecimal: Order = {
   OrderId: 2,
