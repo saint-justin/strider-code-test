@@ -14,6 +14,13 @@ export interface Item {
   Quantity: string;
 }
 
+export interface ItemInfo {
+  id: string;
+  price: number;
+  quantity: number;
+  totalSales: number;
+}
+
 export interface CustomerInfo {
   id: number;
   name: string;

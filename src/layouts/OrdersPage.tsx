@@ -23,7 +23,7 @@ const OrdersPage = () => {
       headerName: 'Customer Link', 
       flex: 1,
       renderCell: (props) => (
-        <Link sx={{ cursor: 'pointer'}} onClick={() => navigate(`/customer/${props.value}`)}>Customer #{props.value}</Link>
+        <Link sx={{ cursor: 'pointer'}} onClick={() => navigate(`/customers/${props.value}`)}>Customer #{props.value}</Link>
       )
     },
     { 
@@ -31,7 +31,7 @@ const OrdersPage = () => {
       headerName: 'Order Link', 
       flex: 1, 
       renderCell: (props) => (
-      <Link sx={{ cursor: 'pointer'}} onClick={() => navigate(`/order/${props.value}`)}>Order #{props.value}</Link>
+      <Link sx={{ cursor: 'pointer'}} onClick={() => navigate(`/orders/${props.value}`)}>Order #{props.value}</Link>
       ),
     }
   ]

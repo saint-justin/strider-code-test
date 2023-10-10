@@ -39,7 +39,7 @@ const OrderPage = () => {
         <LabeledContent label={'Total Cost'} content={formatTotalCostFromItem(item)} />
         <LabeledContent label={'Per Item Cost'} content={reformatCost(item.ItemPrice)} />
         <LabeledContent label={'Quantity'} content={item.Quantity} />
-        <LabeledContent label={'Link'} content={`${item.Item} Page`} linkPath={`/item/${item.Item}`} />
+        <LabeledContent label={'Link'} content={`${item.Item} Page`} linkPath={`/items/${item.Item}`} />
       </AccordionDetails>
     </Accordion>
   )
@@ -55,7 +55,7 @@ const OrderPage = () => {
           <Card sx={{ height: '100%', width: '100%' }}>
             <CardContent>
               <LabeledContent emphasize label={'Total'} content={reformatCost(order.Total)} />
-              <LabeledContent label={'Customer Name'} content={`${order.CustomerName} (Customer ID #${order.CustomerId})`} linkPath={`/customer/${order.CustomerId}`}/>
+              <LabeledContent label={'Customer Name'} content={`${order.CustomerName} (Customer ID #${order.CustomerId})`} linkPath={`/customers/${order.CustomerId}`}/>
               <LabeledContent label={'Placed On'} content={reformatDate(order.Date)} />
             </CardContent>
           </Card>

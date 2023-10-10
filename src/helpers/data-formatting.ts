@@ -1,4 +1,4 @@
-import { CustomerInfo, Item, Order } from "../types";
+import { CustomerInfo, Item, ItemInfo, Order } from "../types";
 
 export interface FormattedOrder {
   id: number; 
@@ -85,7 +85,34 @@ export const getCustomerInfoFromOrders = (orders: Order[], customerId: string): 
 }
 
 /**
- * Helper function that sorts and reformats the order data into a set of unique customer data entries
+ * Helper function to pull item data from orders array
+ * @param { Order[] } orders             - Array of orders to pull from 
+ * @param { string } itemId              - CustomerId to identify customer by 
+ * @returns { CustomerInfo | undefined } - CustomerInfo object if customer has orders, undefined otherwise
+ */
+export const getItemInfoFromOrders = (orders: Order[], itemId: string): ItemInfo | undefined => {
+  const itemOrders = orders
+    .map((order) => order.Items)
+    .flat()
+    .filter((item) => item.Item === itemId);
+
+  if (itemOrders.length === 0) {
+    return undefined;
+  }
+
+  const quantity = itemOrders.reduce((acc, itemOrder) => acc + parseInt(itemOrder.Quantity), 0);
+  const totalSales = quantity * parseFloat(itemOrders[0].ItemPrice.slice(1));
+
+  return ({
+    id: itemId,
+    price: parseFloat(itemOrders[0].ItemPrice.slice(1)),
+    quantity,
+    totalSales
+  })
+}
+
+/**
+ * Helper function that reformats the order data into a set of unique customer data entries
  * @param {Order[]} orders - Default order format array 
  * @returns {FormattedOrder[]} - Reformatted order data for DataGrid
  */
@@ -94,4 +121,20 @@ export const convertOrdersToCustomerRows = (orders: Order[]): CustomerInfo[] => 
   return Array.from(customerIdSet)
     .map(id => getCustomerInfoFromOrders(orders, id.toString()))
     .filter(value => value !== undefined) as CustomerInfo[]
+}
+
+/**
+ * Helper function that reformats order data into a set of unique ItemInfo entries
+ * @param {Order[]} orders - Defautl order format array 
+ * @returns                - Reformatted ItemInfo array
+ */
+export const convertOrdersToItemInfo = (orders: Order[]): ItemInfo[] => {
+  const itemIdsArr = orders
+    .map(order => order.Items).flat()                    
+    .map(item => item.Item);   
+  const itemIdSet = new Set(itemIdsArr);
+
+  return Array.from(itemIdSet)
+    .map(id => getItemInfoFromOrders(orders, id.toString()))
+    .filter(value => value !== undefined) as ItemInfo[];
 }

@@ -27,7 +27,7 @@ const CustomerPage = () => {
         <LabeledContent label={'Total Cost'} content={reformatCost(order.Total)} />
         <LabeledContent label={'Date'} content={reformatDate(order.Date)} />
         <LabeledContent label={'Items'} content={order.Items.reduce((acc, curr) => acc + parseInt(curr.Quantity), 0).toString()} />
-        <LabeledContent label={'Link'} content={`Order #${order.OrderId}`} linkPath={`/order/${order.OrderId}`} />
+        <LabeledContent label={'Link'} content={`Order #${order.OrderId}`} linkPath={`/orders/${order.OrderId}`} />
       </AccordionDetails>
     </Accordion>
   )

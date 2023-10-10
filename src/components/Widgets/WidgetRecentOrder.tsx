@@ -19,7 +19,7 @@ const WidgetRecentOrder = () => {
       headerName: 'Order Link', 
       flex: 1,
       renderCell: (props) => (
-        <Link sx={{ cursor: 'pointer'}} onClick={() => navigate(`/order/${props.value}`)}>Order #{props.value}</Link>
+        <Link sx={{ cursor: 'pointer'}} onClick={() => navigate(`/orders/${props.value}`)}>Order #{props.value}</Link>
       ),
     },
   ]

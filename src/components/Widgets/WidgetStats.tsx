@@ -15,8 +15,8 @@ const WidgetStats = () => {
   const totalOrders = getTotalOrders(orders);
   const [mostPopularName, mostPopularCount] = getMostPopularItem(orders);
   const mostExpensive = getMostExpensiveOrder(orders);
-  const mostExpensiveOrderLink = `/order/${mostExpensive.OrderId}`
-  const mostExpensiveOrderCustomerLink = `/customer/${mostExpensive.CustomerId}`
+  const mostExpensiveOrderLink = `/orders/${mostExpensive.OrderId}`
+  const mostExpensiveOrderCustomerLink = `/customers/${mostExpensive.CustomerId}`
 
   return (
     <Card sx={{ width: '100%' }}>

@@ -1,23 +1,16 @@
 import * as React from 'react';
-import { Box, Card, CardContent, Container, Typography } from '@mui/material';
+import { Box, Card, CardContent, Typography } from '@mui/material';
 import { useOrderContext } from '../../hooks/useOrders';
 import { PieChart } from '@mui/x-charts/PieChart';
 import { MakeOptional } from '@mui/x-charts/models/helpers';
-import { DefaultizedPieValueType, PieItemIdentifier, PieValueType } from '@mui/x-charts';
+import { DefaultizedPieValueType, PieValueType } from '@mui/x-charts';
 import { getCustomerInfoFromOrders } from '../../helpers/data-formatting';
-import { useNavigate } from 'react-router-dom';
 
 const WidgetSalesData = () => {
   const { orders } = useOrderContext();
-  const navigate = useNavigate();
 
   const allCustomers = new Set(orders.map((order) => order.CustomerId.toString()));
   const allCustomerInfo = Array.from(allCustomers).map((customerId) => getCustomerInfoFromOrders(orders, customerId));
-
-  const currencyFormatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format
 
   return (
     <Card sx={{ width: '100%' }}>

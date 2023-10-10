@@ -1,21 +1,24 @@
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { CssBaseline, ThemeProvider } from '@mui/material';
+import { useOrderContext } from './hooks/useOrders';
+import { useThemeContext } from './hooks/useThemeContext';
+import { Paths, STRIDER_PASSTHROUGH_URI } from './constants';
+import { Order } from './types';
+import CustomerPage from './layouts/CustomerPage';
+import CustomersPage from './layouts/CustomersPage';
+import ItemPage from './layouts/ItemPage';
+import ItemsPage from './layouts/ItemsPage';
 import HomePage from './layouts/HomePage';
 import OrderPage from './layouts/OrderPage';
 import OrdersPage from './layouts/OrdersPage';
 import NotFoundPage from './layouts/NotFoundPage';
-import { Paths, STRIDER_PASSTHROUGH_URI } from './constants';
-import { useThemeContext } from './hooks/useThemeContext';
-import { Order } from './types';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import './App.css';
-import { useOrderContext } from './hooks/useOrders';
-import CustomerPage from './layouts/CustomerPage';
-import CustomersPage from './layouts/CustomersPage';
+
 
 
 function App() {
@@ -43,6 +46,8 @@ function App() {
     { path: Paths.ORDER,     element: <OrderPage /> },
     { path: Paths.CUSTOMER,  element: <CustomerPage /> },
     { path: Paths.CUSTOMERS, element: <CustomersPage /> },
+    { path: Paths.ITEM,      element: <ItemPage /> },
+    { path: Paths.ITEMS,     element: <ItemsPage /> },
     { path: '*',             element: <NotFoundPage /> },
   ])
 
