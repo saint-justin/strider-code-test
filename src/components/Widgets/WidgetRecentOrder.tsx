@@ -16,7 +16,7 @@ const WidgetRecentOrder = () => {
     { field: 'itemCount', headerName: 'Total Items', flex: 1 },
     { 
       field: 'orderId', 
-      headerName: 'Link', 
+      headerName: 'Order Link', 
       flex: 1,
       renderCell: (props) => (
         <Link sx={{ cursor: 'pointer'}} onClick={() => navigate(`/order/${props.value}`)}>Order #{props.value}</Link>
@@ -27,18 +27,10 @@ const WidgetRecentOrder = () => {
   return (
     <Card sx={{ width: '100%' }}>
       <CardContent>
-        <Typography variant={'h5'} ml={'12px'} mb={1}>Most Recent Orders</Typography>
+        <Typography variant={'h5'} ml={'12px'} mb={1}>Recent Orders</Typography>
         <DataGrid 
           rows={convertOrdersToRows(orders)} 
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 3,
-              },
-            },
-          }}
-          pageSizeOptions={[3]} />
+          columns={columns} />
       </CardContent>
     </Card>
   )

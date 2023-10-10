@@ -66,7 +66,6 @@ export const formatTotalCostFromItem = (item: Item): string => {
  */
 export const getCustomerInfoFromOrders = (orders: Order[], customerId: string): CustomerInfo | undefined => {
   const customerOrders = orders.filter(order => order.CustomerId === parseInt(customerId));
-
   if (customerOrders.length === 0) {
     return undefined;
   }
