@@ -30,7 +30,9 @@ const WidgetRecentOrder = () => {
         <Typography variant={'h5'} ml={'12px'} mb={1}>Recent Orders</Typography>
         <DataGrid 
           rows={convertOrdersToRows(orders)} 
-          columns={columns} />
+          columns={columns} 
+          initialState={{ pagination: { paginationModel: { pageSize: 3 }} }}
+          pageSizeOptions={[3]}/>
       </CardContent>
     </Card>
   )

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Box, Link, Typography } from '@mui/material';
-import PageContentWrapper from '../components/PageContentWrapper';
+import { Card, CardContent, Link, Typography } from '@mui/material';
 import { useOrderContext } from '../hooks/useOrders';
 import { GridColDef, DataGrid } from '@mui/x-data-grid';
 import { useNavigate } from 'react-router-dom';
 import { convertOrdersToRows } from '../helpers/data-formatting';
+import PageContentWrapper from '../components/PageContentWrapper';
 
 /**
  * Layout to display overview table of all orders in the system
@@ -38,20 +38,21 @@ const OrdersPage = () => {
 
   return (
     <PageContentWrapper>
-      <Box sx={{ display: 'flex', flexDirection: 'column', width: '90%' }}>
-        <Typography variant={'h5'} ml={'12px'} mb={1}>Recent Orders</Typography>
-        {
-          orders.length > 0 
-          ? <DataGrid 
-              sx={{ minWidth: '550px', backgroundColor: 'grey.900'}} 
-              rows={convertOrdersToRows(orders)} 
-              columns={columns} />
-          : 'loading...'
-        }
-      </Box>
-
+      <Card sx={{ display: 'flex', flexDirection: 'column', width: '90%' }}> 
+        <CardContent>
+          <Typography variant={'h5'} ml={'12px'} mb={1}>All Orders</Typography>
+          {
+            orders.length > 0 
+            ? <DataGrid 
+                sx={{ minWidth: '550px', backgroundColor: 'grey.900'}} 
+                rows={convertOrdersToRows(orders)} 
+                columns={columns} />
+            : 'loading...'
+          }
+        </CardContent>
+      </Card>
     </PageContentWrapper>
-  )
+    )
 }
 
 export default OrdersPage;

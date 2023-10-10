@@ -15,6 +15,7 @@ import '@fontsource/roboto/700.css';
 import './App.css';
 import { useOrderContext } from './hooks/useOrders';
 import CustomerPage from './layouts/CustomerPage';
+import CustomersPage from './layouts/CustomersPage';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
     { path: Paths.ORDERS,    element: <OrdersPage /> },
     { path: Paths.ORDER,     element: <OrderPage /> },
     { path: Paths.CUSTOMER,  element: <CustomerPage /> },
+    { path: Paths.CUSTOMERS, element: <CustomersPage /> },
     { path: '*',             element: <NotFoundPage /> },
   ])
 

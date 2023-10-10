@@ -32,9 +32,6 @@ export const convertOrdersToRows = (orders: Order[]) => {
       itemCount: order.Items.reduce((acc, item) => acc + parseInt(item.Quantity), 0),
       total: reformatCost(order.Total),
     }))
-    .sort((a: FormattedOrder, b: FormattedOrder) => 
-      new Date(b.date).valueOf() - new Date(a.date).valueOf()
-    );
 }
 
 /**
@@ -85,4 +82,16 @@ export const getCustomerInfoFromOrders = (orders: Order[], customerId: string): 
     totalOrderSpending: `$${orderSpending.toFixed(2)}`,
     orders: customerOrders
   })
+}
+
+/**
+ * Helper function that sorts and reformats the order data into a set of unique customer data entries
+ * @param {Order[]} orders - Default order format array 
+ * @returns {FormattedOrder[]} - Reformatted order data for DataGrid
+ */
+export const convertOrdersToCustomerRows = (orders: Order[]): CustomerInfo[] => {
+  const customerIdSet = new Set(orders.map(order => order.CustomerId));
+  return Array.from(customerIdSet)
+    .map(id => getCustomerInfoFromOrders(orders, id.toString()))
+    .filter(value => value !== undefined) as CustomerInfo[]
 }
